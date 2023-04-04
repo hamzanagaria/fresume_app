@@ -28,7 +28,7 @@ class _PersonalDetailsState extends ConsumerState<PersonalDetails> {
 
     Personal personal = _pdfProvider.resumePersonal!;
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         if (checkChangeText(emailController.text, personal.email)) {
           emailController.text = personal.email ?? "";
@@ -65,7 +65,9 @@ class _PersonalDetailsState extends ConsumerState<PersonalDetails> {
             initialValue: _pdfProvider.resumePersonal!.email,
             labelText: 'Email Address',
             onTextChanged: (val) {
-              ref.read(pdfProvider.notifier).editPersonal(personal.copyWith(email: val));
+              ref
+                  .read(pdfProvider.notifier)
+                  .editPersonal(personal.copyWith(email: val));
             },
           ),
           Row(
@@ -76,7 +78,9 @@ class _PersonalDetailsState extends ConsumerState<PersonalDetails> {
                   initialValue: returnCorrectStringString(personal.firstName),
                   labelText: 'First Name',
                   onTextChanged: (val) {
-                    ref.read(pdfProvider.notifier).editPersonal(personal.copyWith(firstName: val));
+                    ref
+                        .read(pdfProvider.notifier)
+                        .editPersonal(personal.copyWith(firstName: val));
                   },
                 ),
               ),
@@ -86,7 +90,9 @@ class _PersonalDetailsState extends ConsumerState<PersonalDetails> {
                   initialValue: returnCorrectStringString(personal.lastName),
                   labelText: 'Last Name',
                   onTextChanged: (val) {
-                    ref.read(pdfProvider.notifier).editPersonal(personal.copyWith(lastName: val));
+                    ref
+                        .read(pdfProvider.notifier)
+                        .editPersonal(personal.copyWith(lastName: val));
                   },
                 ),
               ),
@@ -101,7 +107,9 @@ class _PersonalDetailsState extends ConsumerState<PersonalDetails> {
                   labelText: 'Job Role',
                   hintText: 'eg. Software Developer',
                   onTextChanged: (val) {
-                    ref.read(pdfProvider.notifier).editPersonal(personal.copyWith(jobTitle: val));
+                    ref
+                        .read(pdfProvider.notifier)
+                        .editPersonal(personal.copyWith(jobTitle: val));
                   },
                 ),
               ),
@@ -111,7 +119,9 @@ class _PersonalDetailsState extends ConsumerState<PersonalDetails> {
                   initialValue: returnCorrectStringString(personal.email),
                   labelText: 'Phone Number',
                   onTextChanged: (val) {
-                    ref.read(pdfProvider.notifier).editPersonal(personal.copyWith(phoneNumber: val));
+                    ref
+                        .read(pdfProvider.notifier)
+                        .editPersonal(personal.copyWith(phoneNumber: val));
                   },
                 ),
               ),

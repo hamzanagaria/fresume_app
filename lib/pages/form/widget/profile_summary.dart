@@ -23,9 +23,10 @@ class _ProfileSummaryState extends ConsumerState<ProfileSummary> {
 
     Summary summary = _pdfProvider.resumeSummary!;
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        if (checkChangeText(summaryController.text, summary.professionalSummary)) {
+        if (checkChangeText(
+            summaryController.text, summary.professionalSummary)) {
           summaryController.text = summary.professionalSummary ?? "";
         }
       });
@@ -55,7 +56,9 @@ class _ProfileSummaryState extends ConsumerState<ProfileSummary> {
             labelText: "Summary",
             hintText: 'eg. I am a motivated IT graduate looking forward...',
             onTextChanged: (val) {
-              ref.read(pdfProvider.notifier).editSummary(summary.copyWith(professionalSummary: val));
+              ref
+                  .read(pdfProvider.notifier)
+                  .editSummary(summary.copyWith(professionalSummary: val));
             },
           ),
         ],

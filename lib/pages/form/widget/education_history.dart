@@ -49,7 +49,9 @@ class EducationHistory extends ConsumerWidget {
                   child: SectionFullWidget(
                     section: educationList[index],
                     onPressed: () {
-                      ref.read(pdfProvider.notifier).removeEducationSection(educationList[index]);
+                      ref
+                          .read(pdfProvider.notifier)
+                          .removeEducationSection(educationList[index]);
                     },
                   ),
                 );
@@ -62,7 +64,9 @@ class EducationHistory extends ConsumerWidget {
             child: SimpleElevatedButton(
                 buttonWidth: double.infinity,
                 onPressed: () {
-                  ref.read(pdfProvider.notifier).addEducationSection(Section.createEmpty());
+                  ref
+                      .read(pdfProvider.notifier)
+                      .addEducationSection(Section.createEmpty());
                 },
                 text: 'Add another education'),
           )
@@ -96,7 +100,7 @@ class _SectionFullWidgetState extends ConsumerState<SectionFullWidget> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         if (checkChangeText(jobController.text, widget.section.textOne)) {
           jobController.text = widget.section.textOne ?? "";
@@ -107,13 +111,15 @@ class _SectionFullWidgetState extends ConsumerState<SectionFullWidget> {
         if (checkChangeText(cityController.text, widget.section.textThree)) {
           cityController.text = widget.section.textThree ?? "";
         }
-        if (checkChangeText(startDateController.text, widget.section.startDate)) {
+        if (checkChangeText(
+            startDateController.text, widget.section.startDate)) {
           startDateController.text = widget.section.startDate ?? "";
         }
         if (checkChangeText(endDateController.text, widget.section.endDate)) {
           endDateController.text = widget.section.endDate ?? "";
         }
-        if (checkChangeText(descriptionController.text, widget.section.description)) {
+        if (checkChangeText(
+            descriptionController.text, widget.section.description)) {
           descriptionController.text = widget.section.description ?? "";
         }
       });
@@ -129,7 +135,8 @@ class _SectionFullWidgetState extends ConsumerState<SectionFullWidget> {
                 textEditingController: jobController,
                 labelText: 'School',
                 onTextChanged: (val) {
-                  ref.read(pdfProvider.notifier).editEducationSection(widget.section.copyWith(textOne: val));
+                  ref.read(pdfProvider.notifier).editEducationSection(
+                      widget.section.copyWith(textOne: val));
                 },
               ),
             ),
@@ -138,7 +145,8 @@ class _SectionFullWidgetState extends ConsumerState<SectionFullWidget> {
                 textEditingController: employerController,
                 labelText: 'Degree',
                 onTextChanged: (val) {
-                  ref.read(pdfProvider.notifier).editEducationSection(widget.section.copyWith(textTwo: val));
+                  ref.read(pdfProvider.notifier).editEducationSection(
+                      widget.section.copyWith(textTwo: val));
                 },
               ),
             ),
@@ -154,7 +162,8 @@ class _SectionFullWidgetState extends ConsumerState<SectionFullWidget> {
                       textEditingController: startDateController,
                       labelText: 'Start Date',
                       onTextChanged: (val) {
-                        ref.read(pdfProvider.notifier).editEducationSection(widget.section.copyWith(startDate: val));
+                        ref.read(pdfProvider.notifier).editEducationSection(
+                            widget.section.copyWith(startDate: val));
                       },
                     ),
                   ),
@@ -163,7 +172,8 @@ class _SectionFullWidgetState extends ConsumerState<SectionFullWidget> {
                       textEditingController: endDateController,
                       labelText: 'End Date',
                       onTextChanged: (val) {
-                        ref.read(pdfProvider.notifier).editEducationSection(widget.section.copyWith(endDate: val));
+                        ref.read(pdfProvider.notifier).editEducationSection(
+                            widget.section.copyWith(endDate: val));
                       },
                     ),
                   ),
@@ -175,7 +185,8 @@ class _SectionFullWidgetState extends ConsumerState<SectionFullWidget> {
                 textEditingController: cityController,
                 labelText: 'City',
                 onTextChanged: (val) {
-                  ref.read(pdfProvider.notifier).editEducationSection(widget.section.copyWith(textThree: val));
+                  ref.read(pdfProvider.notifier).editEducationSection(
+                      widget.section.copyWith(textThree: val));
                 },
               ),
             ),
@@ -187,7 +198,8 @@ class _SectionFullWidgetState extends ConsumerState<SectionFullWidget> {
           labelText: "Description",
           textEditingController: descriptionController,
           onTextChanged: (val) {
-            ref.read(pdfProvider.notifier).editEducationSection(widget.section.copyWith(description: val));
+            ref.read(pdfProvider.notifier).editEducationSection(
+                widget.section.copyWith(description: val));
           },
         ),
         Padding(

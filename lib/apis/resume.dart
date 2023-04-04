@@ -12,7 +12,12 @@ class PdfModelApi {
 
   Future<bool> updatePdfModel(String id, PdfModel data) async {
     try {
-      await firestore.collection(USER_COLLECTION).doc(uid).collection(RESUME_COLLECTION).doc(id).update(data.toJson());
+      await firestore
+          .collection(USER_COLLECTION)
+          .doc(uid)
+          .collection(RESUME_COLLECTION)
+          .doc(id)
+          .update(data.toJson());
       return true;
     } catch (e) {
       rethrow;
@@ -21,7 +26,12 @@ class PdfModelApi {
 
   Future<bool> deletePdfModel(String id) async {
     try {
-      await firestore.collection(USER_COLLECTION).doc(uid).collection(RESUME_COLLECTION).doc(id).delete();
+      await firestore
+          .collection(USER_COLLECTION)
+          .doc(uid)
+          .collection(RESUME_COLLECTION)
+          .doc(id)
+          .delete();
 
       return true;
     } catch (e) {
@@ -31,7 +41,12 @@ class PdfModelApi {
 
   Future<PdfModel> getSinglePdf(String id) async {
     try {
-      final snapshot = await firestore.collection(USER_COLLECTION).doc(uid).collection(RESUME_COLLECTION).doc(id).get();
+      final snapshot = await firestore
+          .collection(USER_COLLECTION)
+          .doc(uid)
+          .collection(RESUME_COLLECTION)
+          .doc(id)
+          .get();
 
       return PdfModel.fromJson(snapshot.data()!);
     } catch (e) {
@@ -55,7 +70,11 @@ class PdfModelApi {
 
   Future<List<PdfModel>> retrievePdfModel() async {
     try {
-      final snapshot = await firestore.collection(USER_COLLECTION).doc(uid).collection(RESUME_COLLECTION).get();
+      final snapshot = await firestore
+          .collection(USER_COLLECTION)
+          .doc(uid)
+          .collection(RESUME_COLLECTION)
+          .get();
 
       return snapshot.docs.map((data) {
         return PdfModel.fromJson(data.data());
@@ -67,10 +86,15 @@ class PdfModelApi {
 
   Stream<List<PdfModel>> retrievePdfModelTwo() {
     try {
-      final query = firestore.collection(USER_COLLECTION).doc(uid).collection(RESUME_COLLECTION);
+      final query = firestore
+          .collection(USER_COLLECTION)
+          .doc(uid)
+          .collection(RESUME_COLLECTION);
 
       return query.snapshots().map((snapshot) {
-        return snapshot.docs.map((doc) => PdfModel.fromJson(doc.data())).toList();
+        return snapshot.docs
+            .map((doc) => PdfModel.fromJson(doc.data()))
+            .toList();
       });
     } catch (e) {
       rethrow;

@@ -110,18 +110,23 @@ class LoginButton extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AuthFlowBuilder<OAuthController>(
-                flow: gConfig.createFlow(ref.watch(authApiProvider).firebaseAuth, AuthAction.signIn),
+                flow: gConfig.createFlow(
+                    ref.watch(authApiProvider).firebaseAuth, AuthAction.signIn),
                 auth: ref.watch(authApiProvider).firebaseAuth,
                 config: const GoogleProviderConfiguration(clientId: clientId),
                 listener: (oldState, newState, controller) async {
                   if (newState is SignedIn) {
-                    User? currentUser = ref.watch(authApiProvider).firebaseAuth.currentUser;
+                    User? currentUser =
+                        ref.watch(authApiProvider).firebaseAuth.currentUser;
 
                     await ref
                         .watch(firebaseFirestoreProvider)
                         .collection('user')
                         .doc(currentUser!.uid)
-                        .set({'uid': currentUser.uid, 'lastLoggedIn': DateTime.now()});
+                        .set({
+                      'uid': currentUser.uid,
+                      'lastLoggedIn': DateTime.now()
+                    });
                   }
                 },
                 builder: (context, state, controller, _) {
@@ -141,7 +146,9 @@ class LoginButton extends ConsumerWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   'OR',
-                  style: subtitle14.copyWith(color: Pallete.primaryLightColor, fontWeight: FontWeight.w400),
+                  style: subtitle14.copyWith(
+                      color: Pallete.primaryLightColor,
+                      fontWeight: FontWeight.w400),
                 ),
               ),
               SimpleElevatedButton(
@@ -151,7 +158,9 @@ class LoginButton extends ConsumerWidget {
                   buttonWidth: double.infinity,
                   roundedRadius: 5,
                   onPressed: () {
-                    ref.watch(pdfProvider.notifier).editPdf(PdfModel.createEmpty().copyWith(pdfId: 'noSave'),);
+                    ref.watch(pdfProvider.notifier).editPdf(
+                          PdfModel.createEmpty().copyWith(pdfId: 'noSave'),
+                        );
 
                     Get.toNamed('/resume');
                   },
@@ -200,7 +209,8 @@ class LogoAndTitleRow extends StatelessWidget {
             children: [
               Text(
                 'CREATE A FREE RESUME NOW!',
-                style: headline34.copyWith(color: Pallete.primaryColor, fontWeight: FontWeight.bold),
+                style: headline34.copyWith(
+                    color: Pallete.primaryColor, fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
@@ -210,11 +220,14 @@ class LogoAndTitleRow extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await launch('https://www.linkedin.com/in/varun-bhalerao-677a48179/');
+                      await launch(
+                          'www.linkedin.com/in/hamza-nagaria-592627228');
                     },
                     child: Text(
-                      'Varun Bhalerao',
-                      style: subtitle16.copyWith(decoration: TextDecoration.underline, color: Pallete.primaryColor),
+                      'Hamza Nagaria',
+                      style: subtitle16.copyWith(
+                          decoration: TextDecoration.underline,
+                          color: Pallete.primaryColor),
                     ),
                   ),
                 ],
@@ -251,7 +264,8 @@ class LogoAndTitleColumn extends StatelessWidget {
           ),
           Text(
             'CREATE A FREE RESUME NOW!',
-            style: headline20.copyWith(color: Pallete.primaryColor, fontWeight: FontWeight.bold),
+            style: headline20.copyWith(
+                color: Pallete.primaryColor, fontWeight: FontWeight.bold),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -262,11 +276,13 @@ class LogoAndTitleColumn extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  await launch('https://www.linkedin.com/in/varun-bhalerao-677a48179/');
+                  await launch('www.linkedin.com/in/hamza-nagaria-592627228');
                 },
                 child: Text(
-                  'Varun Bhalerao',
-                  style: subtitle16.copyWith(decoration: TextDecoration.underline, color: Pallete.primaryColor),
+                  'Hamza Nagaria',
+                  style: subtitle16.copyWith(
+                      decoration: TextDecoration.underline,
+                      color: Pallete.primaryColor),
                 ),
               ),
             ],

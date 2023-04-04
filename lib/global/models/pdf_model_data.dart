@@ -12,11 +12,9 @@ PdfModel pdfModelData = _pdfEmpty.copyWith(
   resumeSummary: summary,
   skills: skillsData,
   languages: language,
-  
 );
 
-
-
+// REsume detail ki cheddkhaani karte huye yaha se
 Section employmentSectionData = const Section(
     sectionId: 'employmentSection',
     textOne: 'Flutter Developer',
@@ -52,15 +50,17 @@ Summary summary = const Summary(
         'I am a motivated IT graduate looking forward to expanding my knowledge and career in the IT sector. Along with that, I want to experience working with professionals in the field so that I am able to stay up-to-date and learn the best practices that should be used while working in the IT sector. As for me, some of my greatest strengths are communicating and working alongside my peers.');
 
 Personal personalData = const Personal(
-  firstName: 'Varun',
-  lastName: 'Bhalerao',
+  firstName: 'Hamza',
+  lastName: 'Nagaria',
   jobTitle: 'Full Stack Developer',
-  email: 'varunbhalerao5902@gmail.com',
-  phoneNumber: '8975351866',
+  email: 'hamzanagaria41@gmail.com',
+  phoneNumber: '8104400462',
 );
 
-Links linksData =
-    const Links(linksId: '01', linkName: 'Linkedin', linkUrl: 'https://www.linkedin.com/in/varun-bhalerao-677a48179/');
+Links linksData = const Links(
+    linksId: '01',
+    linkName: 'Linkedin',
+    linkUrl: 'www.linkedin.com/in/hamza-nagaria-592627228');
 
 List<Skill> skillsData = const [
   Skill(skillId: '01', skillName: "Flutter"),

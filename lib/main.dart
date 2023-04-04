@@ -1,20 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:fresume_app/apis/auth.dart';
-import 'package:fresume_app/global/constants/constants.dart';
-import 'package:fresume_app/global/routes/routes.dart';
-
-import 'package:fresume_app/global/theme/theme.dart';
-import 'package:fresume_app/global/widgets/loading.dart';
-
-import 'package:fresume_app/pages/home/view/home_view.dart';
-import 'package:fresume_app/pages/unknown/unknown_route.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_strategy/url_strategy.dart';
 
+import 'package:fresume_app/apis/auth.dart';
+import 'package:fresume_app/global/constants/constants.dart';
+import 'package:fresume_app/global/routes/routes.dart';
+import 'package:fresume_app/global/theme/theme.dart';
+import 'package:fresume_app/global/widgets/loading.dart';
+import 'package:fresume_app/pages/home/view/home_view.dart';
+import 'package:fresume_app/pages/unknown/unknown_route.dart';
 
 //Test commit
 Future<void> main() async {
@@ -32,14 +29,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "Fresume",
+      title: "Resume Builder",
       debugShowCheckedModeBanner: false,
       builder: (context, widget) => ResponsiveWrapper.builder(
         widget!,
         background: Container(
           color: Colors.grey.shade50,
         ),
-      
         defaultScale: true,
         breakpoints: const [
           ResponsiveBreakpoint.resize(450, name: MOBILE),
@@ -63,7 +59,7 @@ class AuthGate extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     return ref.watch(authStateChangeProvider).when(data: (snapshot) {
-      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         if (snapshot != null) {
           Get.offAndToNamed('/home');
         }

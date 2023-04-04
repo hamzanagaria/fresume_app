@@ -49,7 +49,9 @@ class SkillsInfo extends ConsumerWidget {
                   child: SkillFullWidget(
                     skill: skillsList[index],
                     onPressed: () {
-                      ref.read(pdfProvider.notifier).removeSkill(skillsList[index]);
+                      ref
+                          .read(pdfProvider.notifier)
+                          .removeSkill(skillsList[index]);
                     },
                   ),
                 );
@@ -91,7 +93,7 @@ class _SectionFullWidgetState extends ConsumerState<SkillFullWidget> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         if (checkChangeText(skillNameController.text, widget.skill.skillName)) {
           skillNameController.text = widget.skill.skillName ?? "";
@@ -106,7 +108,9 @@ class _SectionFullWidgetState extends ConsumerState<SkillFullWidget> {
           textEditingController: skillNameController,
           labelText: 'Skill Name',
           onTextChanged: (val) {
-            ref.read(pdfProvider.notifier).editSkill(widget.skill.copyWith(skillName: val));
+            ref
+                .read(pdfProvider.notifier)
+                .editSkill(widget.skill.copyWith(skillName: val));
           },
         ),
         Padding(

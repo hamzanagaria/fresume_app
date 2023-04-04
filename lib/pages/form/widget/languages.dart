@@ -49,7 +49,9 @@ class LanguagesInfo extends ConsumerWidget {
                   child: LanguageFullWidget(
                     language: languagesList[index],
                     onPressed: () {
-                      ref.read(pdfProvider.notifier).removeLanguage(languagesList[index]);
+                      ref
+                          .read(pdfProvider.notifier)
+                          .removeLanguage(languagesList[index]);
                     },
                   ),
                 );
@@ -62,7 +64,9 @@ class LanguagesInfo extends ConsumerWidget {
             child: SimpleElevatedButton(
                 buttonWidth: double.infinity,
                 onPressed: () {
-                  ref.read(pdfProvider.notifier).addLanguage(Skill.createEmpty());
+                  ref
+                      .read(pdfProvider.notifier)
+                      .addLanguage(Skill.createEmpty());
                 },
                 text: 'Add another language'),
           )
@@ -91,9 +95,10 @@ class _SectionFullWidgetState extends ConsumerState<LanguageFullWidget> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        if (checkChangeText(languageNameController.text, widget.language.skillName)) {
+        if (checkChangeText(
+            languageNameController.text, widget.language.skillName)) {
           languageNameController.text = widget.language.skillName ?? "";
         }
       });
@@ -106,7 +111,9 @@ class _SectionFullWidgetState extends ConsumerState<LanguageFullWidget> {
           textEditingController: languageNameController,
           labelText: 'Skill Name',
           onTextChanged: (val) {
-            ref.read(pdfProvider.notifier).editLanguage(widget.language.copyWith(skillName: val));
+            ref
+                .read(pdfProvider.notifier)
+                .editLanguage(widget.language.copyWith(skillName: val));
           },
         ),
         Padding(

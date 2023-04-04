@@ -49,7 +49,9 @@ class LinksInfo extends ConsumerWidget {
                   child: LinksFullWidget(
                     link: linksList[index],
                     onPressed: () {
-                      ref.read(pdfProvider.notifier).removeLink(linksList[index]);
+                      ref
+                          .read(pdfProvider.notifier)
+                          .removeLink(linksList[index]);
                     },
                   ),
                 );
@@ -93,7 +95,7 @@ class _SectionFullWidgetState extends ConsumerState<LinksFullWidget> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         if (checkChangeText(linkNameController.text, widget.link.linkName)) {
           linkNameController.text = widget.link.linkName ?? "";
@@ -107,7 +109,6 @@ class _SectionFullWidgetState extends ConsumerState<LinksFullWidget> {
     return BorderedExpansionTile(
       title: widget.link.linkName ?? "Test",
       children: [
-
         Row(
           children: [
             Flexible(
@@ -115,7 +116,9 @@ class _SectionFullWidgetState extends ConsumerState<LinksFullWidget> {
                 textEditingController: linkNameController,
                 labelText: 'Link Name',
                 onTextChanged: (val) {
-                  ref.read(pdfProvider.notifier).editLink(widget.link.copyWith(linkName: val));
+                  ref
+                      .read(pdfProvider.notifier)
+                      .editLink(widget.link.copyWith(linkName: val));
                 },
               ),
             ),
@@ -124,7 +127,9 @@ class _SectionFullWidgetState extends ConsumerState<LinksFullWidget> {
                 textEditingController: linkUrlController,
                 labelText: 'Link URL',
                 onTextChanged: (val) {
-                  ref.read(pdfProvider.notifier).editLink(widget.link.copyWith(linkUrl: val));
+                  ref
+                      .read(pdfProvider.notifier)
+                      .editLink(widget.link.copyWith(linkUrl: val));
                 },
               ),
             ),
